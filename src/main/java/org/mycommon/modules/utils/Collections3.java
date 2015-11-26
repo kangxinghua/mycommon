@@ -12,7 +12,7 @@ import java.util.*;
  * 
  * 函数主要由两部分组成，一是自反射提取元素的功能，二是源自Apache Commons Collection, 争取不用在项目里引入它。
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class Collections3 {
 

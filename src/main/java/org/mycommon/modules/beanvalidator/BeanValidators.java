@@ -21,7 +21,7 @@ import java.util.Set;
  * 
  * 详情见wiki: https://github.com/springside/springside4/wiki/HibernateValidator
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class BeanValidators {
 
