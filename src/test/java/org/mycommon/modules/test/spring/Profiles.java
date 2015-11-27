@@ -1,9 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2005, 2014 springside.github.io
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ *******************************************************************************/
 package org.mycommon.modules.test.spring;
 
 /**
  * Spring profile 常用方法与profile名称。
  * 
- * @author KangXinghua
+ * @author calvin
  */
 public class Profiles {
 

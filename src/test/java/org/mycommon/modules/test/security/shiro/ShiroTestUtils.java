@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * Copyright (c) 2005, 2014 springside.github.io
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ *******************************************************************************/
 package org.mycommon.modules.test.security.shiro;
 
 import org.apache.shiro.subject.Subject;
@@ -8,7 +13,7 @@ import org.mockito.Mockito;
 /**
  * 在单元测试中的Shiro工具类，
  * 
- * @author KangXinghua
+ * @author calvin
  */
 public class ShiroTestUtils {
 
