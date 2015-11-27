@@ -1,8 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2014 springside.github.io
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- *******************************************************************************/
 package org.mycommon.modules.security.utils;
 
 import org.apache.commons.lang3.Validate;
@@ -19,7 +14,7 @@ import java.security.SecureRandom;
  * 
  * 返回ByteSource，可进一步被编码为Hex, Base64或UrlSafeBase64
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class Digests {
 

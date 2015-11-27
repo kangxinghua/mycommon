@@ -1,8 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2014 springside.github.io
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- *******************************************************************************/
 package org.mycommon.modules.mapper;
 
 import com.google.common.collect.Lists;
@@ -19,7 +14,7 @@ import java.util.List;
  * 3. 批量转换Collection中的所有对象.
  * 4. 区分创建新的B对象与将对象A值复制到已存在的B对象两种函数.
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class BeanMapper {
 

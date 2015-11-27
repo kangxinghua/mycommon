@@ -1,8 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2014 springside.github.io
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- *******************************************************************************/
 package org.mycommon.modules.security.utils;
 
 import org.mycommon.modules.utils.Exceptions;
@@ -22,7 +17,7 @@ import java.util.Arrays;
  * 
  * 支持Hex与Base64两种编码方式.
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class Cryptos {
 

@@ -1,8 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2014 springside.github.io
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- *******************************************************************************/
 package org.mycommon.modules.test.spring;
 
 import javax.sql.DataSource;
@@ -19,7 +14,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
  * 
  * @ContextConfiguration(locations = { "/applicationContext.xml" })
  * 
- * @author calvin
+ * @author KangXinghua
  */
 @ActiveProfiles(Profiles.UNIT_TEST)
 public abstract class SpringTransactionalTestCase extends AbstractTransactionalJUnit4SpringContextTests {
