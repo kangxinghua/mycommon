@@ -20,10 +20,10 @@ import java.util.regex.Pattern;
  * 字符串工具类, 继承org.apache.commons.lang3.StringUtils类
  * Created by KangXinghua on 2015/1/23.
  */
-public class StringUtils extends org.apache.commons.lang3.StringUtils {
+public class Strings extends org.apache.commons.lang3.StringUtils {
 
     public static String lowerFirst(String str) {
-        if (StringUtils.isBlank(str)) {
+        if (Strings.isBlank(str)) {
             return "";
         } else {
             return str.substring(0, 1).toLowerCase() + str.substring(1);
@@ -31,7 +31,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     public static String upperFirst(String str) {
-        if (StringUtils.isBlank(str)) {
+        if (Strings.isBlank(str)) {
             return "";
         } else {
             return str.substring(0, 1).toUpperCase() + str.substring(1);
