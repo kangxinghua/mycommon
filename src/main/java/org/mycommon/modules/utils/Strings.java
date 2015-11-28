@@ -129,15 +129,15 @@ public class Strings extends org.apache.commons.lang3.StringUtils {
         return toLong(val).intValue();
     }
 
-    /**
-     * 获得i18n字符串
-     */
-    public static String getMessage(String code, Object[] args) {
-        LocaleResolver localLocaleResolver = SpringContextHolder.getBean(LocaleResolver.class);
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Locale localLocale = localLocaleResolver.resolveLocale(request);
-        return SpringContextHolder.getApplicationContext().getMessage(code, args, localLocale);
-    }
+//    /**
+//     * 获得i18n字符串
+//     */
+//    public static String getMessage(String code, Object[] args) {
+//        LocaleResolver localLocaleResolver = SpringContextHolder.getBean(LocaleResolver.class);
+//        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+//        Locale localLocale = localLocaleResolver.resolveLocale(request);
+//        return SpringContextHolder.getApplicationContext().getMessage(code, args, localLocale);
+//    }
 
     /**
      * 获得用户远程地址
