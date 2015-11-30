@@ -22,48 +22,44 @@ public class DynamicSpecifications {
                     for (SearchFilter filter : filters) {
                         // nested path translate, 如Task的名为"user.name"的filedName, 转换为Task.user.name属性
                         String[] names = StringUtils.split(filter.fieldName, ".");
-                        Path expression = root.get(names[0]);
-                        for (int i = 1; i < names.length; i++) {
-                            expression = expression.get(names[i]);
-                        }
 
                         // logic operator
                         switch (filter.operator) {
                             case EQ:
-                                predicates.add(builder.equal(expression, filter.value));
+                                predicates.add(builder.equal(DynamicSpecifications.getExpression(root, names), filter.value));
                                 break;
                             case NEQ:
-                                predicates.add(builder.notEqual(expression, filter.value));
+                                predicates.add(builder.notEqual(DynamicSpecifications.getExpression(root, names), filter.value));
                                 break;
                             case LIKE:
-                                predicates.add(builder.like(expression, "%" + filter.value + "%"));
+                                predicates.add(builder.like(DynamicSpecifications.<String>getExpression(root, names), "%" + filter.value + "%"));
                                 break;
                             case LIKEP:
-                                predicates.add(builder.like(expression, filter.value + "%"));
+                                predicates.add(builder.like(DynamicSpecifications.<String>getExpression(root, names), filter.value + "%"));
                                 break;
                             case PLIKE:
-                                predicates.add(builder.like(expression, "%" + filter.value));
+                                predicates.add(builder.like(DynamicSpecifications.<String>getExpression(root, names), "%" + filter.value));
                                 break;
                             case GT:
-                                predicates.add(builder.greaterThan(expression, (Comparable) filter.value));
+                                predicates.add(builder.<Comparable>greaterThan(DynamicSpecifications.getExpression(root, names), (Comparable) filter.value));
                                 break;
                             case LT:
-                                predicates.add(builder.lessThan(expression, (Comparable) filter.value));
+                                predicates.add(builder.<Comparable>lessThan(DynamicSpecifications.getExpression(root, names), (Comparable) filter.value));
                                 break;
                             case GTE:
-                                predicates.add(builder.greaterThanOrEqualTo(expression, (Comparable) filter.value));
+                                predicates.add(builder.<Comparable>greaterThanOrEqualTo(DynamicSpecifications.getExpression(root, names), (Comparable) filter.value));
                                 break;
                             case LTE:
-                                predicates.add(builder.lessThanOrEqualTo(expression, (Comparable) filter.value));
+                                predicates.add(builder.<Comparable>lessThanOrEqualTo(DynamicSpecifications.getExpression(root, names), (Comparable) filter.value));
                                 break;
                             case IN:
                                 if (filter.value instanceof Iterable) {
-                                    predicates.add(builder.in(expression).value(filter.value));
+                                    predicates.add(builder.in(DynamicSpecifications.getExpression(root, names)).value(filter.value));
                                 } else if (filter.value.getClass().isArray()) {
-                                    predicates.add(builder.in(expression).value(Arrays.asList(filter.value)));
+                                    predicates.add(builder.in(DynamicSpecifications.getExpression(root, names)).value(Arrays.asList(filter.value)));
                                 } else {
                                     // only one element, convert to equal expression
-                                    predicates.add(builder.equal(expression, filter.value));
+                                    predicates.add(builder.equal(DynamicSpecifications.getExpression(root, names), filter.value));
                                 }
                                 break;
                         }
@@ -78,5 +74,13 @@ public class DynamicSpecifications {
                 return builder.conjunction();
             }
         };
+    }
+
+    private static <T> Expression<T> getExpression(Root<?> root, String[] names) {
+        Path<T> expression = root.<T>get(names[0]);
+        for (int i = 1; i < names.length; i++) {
+            expression = expression.<T>get(names[i]);
+        }
+        return expression;
     }
 }

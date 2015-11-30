@@ -5,9 +5,9 @@ import java.io.StringWriter;
 
 /**
  * 关于异常的工具类.
- * 
+ *
  * 参考了guava的Throwables。
- * 
+ *
  * @author KangXinghua
  */
 public class Exceptions {
@@ -56,10 +56,10 @@ public class Exceptions {
 	/**
 	 * 判断异常是否由某些底层的异常引起.
 	 */
-	public static boolean isCausedBy(Exception ex, Class<? extends Exception>... causeExceptionClasses) {
+	public static boolean isCausedBy(Exception ex, Class<?>... causeExceptionClasses) {
 		Throwable cause = ex;
 		while (cause != null) {
-			for (Class<? extends Exception> causeClass : causeExceptionClasses) {
+			for (Class<?> causeClass : causeExceptionClasses) {
 				if (causeClass.isInstance(cause)) {
 					return true;
 				}
