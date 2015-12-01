@@ -21,7 +21,7 @@ import java.util.Set;
  * 
  * 详情见wiki: https://github.com/springside/springside4/wiki/HibernateValidator
  * 
- * @author calvin
+ * @author KangXinghua
  */
 public class BeanValidators {
 
@@ -30,7 +30,7 @@ public class BeanValidators {
 	 */
 	public static void validateWithException(Validator validator, Object object, Class<?>... groups)
 			throws ConstraintViolationException {
-		Set constraintViolations = validator.validate(object, groups);
+		Set<? extends ConstraintViolation<?>> constraintViolations = validator.validate(object, groups);
 		if (!constraintViolations.isEmpty()) {
 			throw new ConstraintViolationException(constraintViolations);
 		}
