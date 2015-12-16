@@ -235,15 +235,4 @@ public class Cryptos {
         random.nextBytes(bytes);
         return bytes;
     }
-
-    public static void main(String[] args) {
-        String key = "27fd9bb51e54dd8955ab65a6868f17af";
-        String iv = "d492e11729b36da671c980932331c256";
-        String input = "foo message";
-
-        String encryptResult = Cryptos.aesEncrypt(input, key);
-        String descryptResult = Cryptos.aesDecrypt(Encodes.decodeHex(encryptResult), Encodes.decodeHex(key));
-        System.out.println("aes encrypt in hex result :" + encryptResult);
-        System.out.println(descryptResult);
-    }
 }
