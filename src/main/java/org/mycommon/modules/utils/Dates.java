@@ -198,6 +198,19 @@ public class Dates {
         return getOffsetDays(date1, date2) / 7;
     }
 
+
+    public static Date getTime(int year, int month, int day, int hour, int minute, int second, int mmmm) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.SECOND, second);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.MILLISECOND, mmmm);
+        return cal.getTime();
+    }
+
     /**
      * 获取重置指定日期的时分秒后的时间
      *
