@@ -4,7 +4,7 @@
 
     <groupId>org.mycommon</groupId>
     <artifactId>mycommon-core</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>mycommon-core</name>
@@ -267,4 +267,14 @@
             </snapshots>
         </repository>
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>Releases</id>
+            <url>http://192.168.0.81:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>Snapshots</id>
+            <url>http://192.168.0.81:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
