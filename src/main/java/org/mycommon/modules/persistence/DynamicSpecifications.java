@@ -2,6 +2,7 @@ package org.mycommon.modules.persistence;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.Where;
 import org.mycommon.modules.utils.Collections3;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -70,8 +71,12 @@ public class DynamicSpecifications {
                         return builder.and(predicates.toArray(new Predicate[predicates.size()]));
                     }
                 }
-
-                return builder.conjunction();
+                Where annotationWhere = entityClazz.getAnnotation(Where.class);
+                if (annotationWhere != null) {//如果有Where 就不用加 builder.conjunction() 1=1,注入拦截会拦截掉,报错
+                    return null;
+                } else {
+                    return builder.conjunction();
+                }
             }
         };
     }
