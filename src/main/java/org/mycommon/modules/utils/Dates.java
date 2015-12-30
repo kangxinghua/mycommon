@@ -75,6 +75,23 @@ public class Dates {
         LEGALHOLIDAY.put(2015, legalHoliday2015);
 
         List<Date> legalHoliday2016 = Lists.newArrayList();
+        legalHoliday2016.add(new GregorianCalendar(2016, 0, 1).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 1, 8).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 1, 9).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 1, 10).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 1, 11).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 1, 12).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 3, 4).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 4, 2).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 5, 9).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 5, 10).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 8, 15).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 8, 16).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 9, 3).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 9, 4).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 9, 5).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 9, 6).getTime());
+        legalHoliday2016.add(new GregorianCalendar(2016, 9, 7).getTime());
         LEGALHOLIDAY.put(2016, legalHoliday2016);
 
         List<Date> legalWorkday2014 = Lists.newArrayList();
@@ -91,6 +108,14 @@ public class Dates {
         legalWorkday2015.add(new GregorianCalendar(2015, 8, 6).getTime());
         legalWorkday2015.add(new GregorianCalendar(2015, 9, 10).getTime());
         LEGALWORKDAY.put(2015, legalWorkday2015);
+
+        List<Date> legalWorkday2016 = Lists.newArrayList();
+        legalWorkday2015.add(new GregorianCalendar(2016, 5, 12).getTime());
+        legalWorkday2015.add(new GregorianCalendar(2016, 8, 18).getTime());
+        legalWorkday2015.add(new GregorianCalendar(2016, 8, 6).getTime());
+        legalWorkday2015.add(new GregorianCalendar(2016, 9, 8).getTime());
+        legalWorkday2015.add(new GregorianCalendar(2016, 9, 9).getTime());
+        LEGALWORKDAY.put(2016, legalWorkday2016);
     }
 
     /**
@@ -440,7 +465,14 @@ public class Dates {
      * @return 返回下个月第一天的起始时间
      */
     public static Date getNextMonthStartTime() {
+        return getNextMonthStartTime(null);
+    }
+
+    public static Date getNextMonthStartTime(Date date) {
         Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
         cal.add(Calendar.MONTH, 1);
         cal.set(Calendar.DAY_OF_MONTH, 1);
         return getIntegralStartTime(cal.getTime());
@@ -712,6 +744,89 @@ public class Dates {
         return Math.abs(years) + "年" + (years > 0 ? "前" : "后");
     }
 
+    public static Date getNextWeek(Date date, int week) {
+        Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
+
+        cal.add(Calendar.DATE, 7);
+        cal.set(Calendar.DAY_OF_WEEK, week);
+
+        return cal.getTime();
+    }
+
+    public static Date getNextWeek(int week) {
+        return getNextWeek(null, week);
+    }
+
+    public static Date getPrevWeek(Date date, int week) {
+        Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
+
+        cal.add(Calendar.DATE, -7);
+        cal.set(Calendar.DAY_OF_WEEK, week);
+
+        return cal.getTime();
+    }
+
+    public static Date getPrevWeek(int week) {
+        return getPrevWeek(null, week);
+    }
+
+    /**
+     * 计算指定时间的年数
+     *
+     * @param date 指定日期
+     * @return 返回时间的年数
+     */
+    public static int getYear(Date date) {
+        Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
+        int year = cal.get(Calendar.YEAR);
+        return year;
+    }
+
+    public static int getYear() {
+        return getYear(null);
+    }
+
+    /**
+     * 计算指定时间的月份
+     *
+     * @param date 指定日期
+     * @return 返回时间的月份
+     */
+    public static int getMonth(Date date) {
+        Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
+        int month = cal.get(Calendar.MONTH);
+        return month + 1;
+    }
+
+    public static int getMonth() {
+        return getMonth(null);
+    }
+
+    public static int getDay(Date date) {
+        Calendar cal = Calendar.getInstance();
+        if (date != null) {
+            cal.setTime(date);
+        }
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return day;
+    }
+
+    public static int getDay() {
+        return getDay(null);
+    }
+
     /**
      * 计算指定时间的小时数
      *
@@ -762,6 +877,13 @@ public class Dates {
         System.out.println("获取当周的最后一个工作日：" + format(getLastWorkday(), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("2014年2月8日：" + getWeekdayDesc(new GregorianCalendar(2014, 1, 8).getTime()) + (isWorkday(new GregorianCalendar(2014, 1, 8).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("2015年10月10日：" + getWeekdayDesc(new GregorianCalendar(2015, 9, 10).getTime()) + (isWorkday(new GregorianCalendar(2015, 9, 10).getTime()) ? "是工作日" : "不是工作日"));
+        System.out.println("今年是:" + getYear() + "年" + getMonth() + "月" + getDay() + "日");
+        System.out.println("下周一是:" + format(getNextWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
+        System.out.println("上周一是:" + format(getPrevWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
+        System.out.println("下个月10是:" + format(rollDay(getNextMonthStartTime(), 9), PATTERN_CLASSICAL_SIMPLE));
+        System.out.println("下下个月10是:" + format(rollDay(getNextMonthStartTime(getNextMonthStartTime()), 9), PATTERN_CLASSICAL_SIMPLE));
+        System.out.println("上个月10是:" + format(rollDay(getLastMonthStartTime(), 9), PATTERN_CLASSICAL_SIMPLE));
+        System.out.println("上上个月10是:" + format(rollDay(getLastMonthStartTime(getLastMonthStartTime()), 9), PATTERN_CLASSICAL_SIMPLE));
         System.out.println(getWeekdayDesc(null));
     }
 }
