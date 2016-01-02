@@ -1,9 +1,9 @@
-package org.mycommon.modules.persistence;
+package org.mycommon.modules.jpa.persistence;
 
 import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Where;
 import org.mycommon.modules.utils.Collections3;
+import org.mycommon.modules.utils.Strings;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
@@ -22,7 +22,7 @@ public class DynamicSpecifications {
                     List<Predicate> predicates = Lists.newArrayList();
                     for (SearchFilter filter : filters) {
                         // nested path translate, 如Task的名为"user.name"的filedName, 转换为Task.user.name属性
-                        String[] names = StringUtils.split(filter.fieldName, ".");
+                        String[] names = Strings.split(filter.fieldName, ".");
 
                         // logic operator
                         switch (filter.operator) {

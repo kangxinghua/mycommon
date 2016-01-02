@@ -1,4 +1,4 @@
-package org.mycommon.modules.persistence;
+package org.mycommon.modules.jpa.persistence;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Hibernate;

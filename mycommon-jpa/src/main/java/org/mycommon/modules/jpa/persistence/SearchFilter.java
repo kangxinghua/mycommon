@@ -1,8 +1,8 @@
-package org.mycommon.modules.persistence;
+package org.mycommon.modules.jpa.persistence;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
+import org.mycommon.modules.utils.Strings;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,13 +49,13 @@ public class SearchFilter {
             }
 
             if (value instanceof String) {
-                if (StringUtils.isBlank((String) value)) {
+                if (Strings.isBlank((String) value)) {
                     continue;
                 }
             }
 
             // 拆分operator与filedAttribute
-            String[] names = StringUtils.split(key, "_");
+            String[] names = Strings.split(key, "_");
             if (names.length < 2 || names.length > 3) {
                 throw new IllegalArgumentException(key + " is not a valid search filter name");
             }
@@ -91,9 +91,9 @@ public class SearchFilter {
                     case BOOLEAN:
                         if (value instanceof Boolean) {
                         } else {
-                            if (StringUtils.equals("0", value.toString())) {
+                            if (Strings.equals("0", value.toString())) {
                                 value = false;
-                            } else if (StringUtils.equals("1", value.toString())) {
+                            } else if (Strings.equals("1", value.toString())) {
                                 value = true;
                             } else {
                                 value = Boolean.valueOf(value.toString());
