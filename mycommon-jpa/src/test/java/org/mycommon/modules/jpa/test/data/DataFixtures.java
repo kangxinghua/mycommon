@@ -1,4 +1,4 @@
-package org.mycommon.modules.test.data;
+package org.mycommon.modules.jpa.test.data;
 
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;

@@ -1,4 +1,4 @@
-package org.mycommon.modules.test.data;
+package org.mycommon.modules.jpa.test.data;
 
 import java.util.Collections;
 import java.util.List;
