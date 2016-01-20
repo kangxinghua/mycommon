@@ -45,6 +45,8 @@ public class DatesTest {
         System.out.println("上个月10是:" + Dates.format(Dates.rollDay(Dates.getLastMonthStartTime(), 9), Dates.PATTERN_CLASSICAL_SIMPLE));
         System.out.println("上上个月10是:" + Dates.format(Dates.rollDay(Dates.getLastMonthStartTime(Dates.getLastMonthStartTime()), 9), Dates.PATTERN_CLASSICAL_SIMPLE));
         System.out.println(Dates.getWeekdayDesc(null));
+        System.out.println(Dates.parse("2015-01-01"));
+        System.out.println(Dates.parse("2015-01-01 12:12:12"));
     }
 
 }
