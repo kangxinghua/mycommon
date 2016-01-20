@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by KangXinghua on 2015/9/18.
@@ -13,6 +14,7 @@ public class Dates {
 
     private static Map<Integer, List<Date>> LEGALHOLIDAY = Maps.newConcurrentMap();//法定假日
     private static Map<Integer, List<Date>> LEGALWORKDAY = Maps.newConcurrentMap();//法定工作日
+    private static Map<String, String> DATE_PATTERN_MAP = Maps.newConcurrentMap();//时间判断格式
 
     // Grace style
     public static final String PATTERN_GRACE = "yyyy/MM/dd HH:mm:ss";
@@ -35,6 +37,21 @@ public class Dates {
     }
 
     static {
+        DATE_PATTERN_MAP.put(PATTERN_CLASSICAL_TIME, "\\d{1,2}:\\d{1,2}:\\d{1,2}");
+
+        DATE_PATTERN_MAP.put(PATTERN_GRACE_SIMPLE, "\\d{4}/\\d{1,2}/\\d{1,2}");
+        DATE_PATTERN_MAP.put(PATTERN_GRACE, DATE_PATTERN_MAP.get(PATTERN_GRACE_SIMPLE) + " " + DATE_PATTERN_MAP.get(PATTERN_CLASSICAL_TIME));
+        DATE_PATTERN_MAP.put(PATTERN_GRACE_NORMAL, DATE_PATTERN_MAP.get(PATTERN_GRACE_SIMPLE) + " \\d{1,2}:\\d{1,2}");
+
+        DATE_PATTERN_MAP.put(PATTERN_CLASSICAL_SIMPLE, "\\d{4}-\\d{1,2}-\\d{1,2}");
+        DATE_PATTERN_MAP.put(PATTERN_CLASSICAL, DATE_PATTERN_MAP.get(PATTERN_CLASSICAL_SIMPLE) + " " + DATE_PATTERN_MAP.get(PATTERN_CLASSICAL_TIME));
+        DATE_PATTERN_MAP.put(PATTERN_CLASSICAL_NORMAL, DATE_PATTERN_MAP.get(PATTERN_CLASSICAL_SIMPLE) + " \\d{1,2}:\\d{1,2}");
+
+        DATE_PATTERN_MAP.put(PATTERN_CH_SIMPLE, "\\d{4}年\\d{1,2}月\\d{1,2}日");
+        DATE_PATTERN_MAP.put(PATTERN_CH, DATE_PATTERN_MAP.get(PATTERN_CH_SIMPLE) + " \\d{1,2}时\\d{1,2}分\\d{1,2}秒");
+        DATE_PATTERN_MAP.put(PATTERN_CH_NORMAL, DATE_PATTERN_MAP.get(PATTERN_CH_SIMPLE) + " \\d{1,2}时\\d{1,2}分");
+
+
         List<Date> legalHoliday2014 = Lists.newArrayList();
         legalHoliday2014.add(new GregorianCalendar(2014, 0, 1).getTime());
         legalHoliday2014.add(new GregorianCalendar(2014, 0, 31).getTime());
@@ -125,7 +142,15 @@ public class Dates {
      * @return 返回解析后的日期
      */
     public static Date parse(String str) {
-        return parse(str, PATTERN_CLASSICAL);
+        String pattern = "";
+        for (Map.Entry<String, String> entry : DATE_PATTERN_MAP.entrySet()) {
+            if (Strings.isNotBlank(entry.getValue())) {
+                if (Pattern.matches(entry.getValue(), str)) {
+                    pattern = entry.getKey();
+                }
+            }
+        }
+        return parse(str, pattern);
     }
 
     /**
