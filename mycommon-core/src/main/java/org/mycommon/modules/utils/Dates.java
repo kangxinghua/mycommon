@@ -147,6 +147,7 @@ public class Dates {
             if (Strings.isNotBlank(entry.getValue())) {
                 if (Pattern.matches(entry.getValue(), str)) {
                     pattern = entry.getKey();
+                    break;
                 }
             }
         }
