@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Map;
 import java.util.zip.*;
 
 /**
@@ -195,6 +196,37 @@ public class Zips {
             }
         }
         return decompressed;
+    }
+
+    /**
+     * 压缩文件
+     */
+    public static ByteArrayOutputStream zipFiles(Map<String, ByteArrayInputStream> mapInputStream) {
+        byte[] buf = new byte[1024];
+        try {
+            // Create the ZIP file
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ZipOutputStream out = new ZipOutputStream(os);
+            // Compress the files
+            for (Map.Entry<String, ByteArrayInputStream> entry : mapInputStream.entrySet()) {
+                // Add ZIP entry to output stream.
+                out.putNextEntry(new ZipEntry(entry.getKey()));
+                // Transfer bytes from the file to the ZIP file
+                int len;
+                while ((len = entry.getValue().read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                // Complete the entry
+                out.closeEntry();
+                entry.getValue().close();
+            }
+            // Complete the ZIP file
+            out.close();
+            return os;
+        } catch (IOException e) {
+            logger.error("ZipUtil zipFiles exception:" + e);
+            return null;
+        }
     }
 }
 
