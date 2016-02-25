@@ -332,7 +332,7 @@ public class Dates {
      * @param day   指定天数
      * @return 返回累加年月日后的时间
      */
-    public static Date rollDate(Date date, int year, int month, int day) {
+    public static Date rollDate(Date date, int year, int month, int day, int hour, int minute, int second) {
         Calendar cal = Calendar.getInstance();
         if (date != null) {
             cal.setTime(date);
@@ -340,6 +340,9 @@ public class Dates {
         cal.add(Calendar.YEAR, year);
         cal.add(Calendar.MONTH, month);
         cal.add(Calendar.DAY_OF_MONTH, day);
+        cal.add(Calendar.HOUR, hour);
+        cal.add(Calendar.MINUTE, minute);
+        cal.add(Calendar.SECOND, second);
         return cal.getTime();
     }
 
@@ -351,7 +354,7 @@ public class Dates {
      * @return 返回累加月数后的时间
      */
     public static Date rollMonth(Date date, int month) {
-        return rollDate(date, 0, month, 0);
+        return rollDate(date, 0, month, 0, 0, 0, 0);
     }
 
     /**
@@ -362,7 +365,29 @@ public class Dates {
      * @return 返回累加天数后的时间
      */
     public static Date rollDay(Date date, int day) {
-        return rollDate(date, 0, 0, day);
+        return rollDate(date, 0, 0, day, 0, 0, 0);
+    }
+
+    /**
+     * 获取指定日期累加指定天数后的时间
+     *
+     * @param date 指定日期
+     * @param hour 指定小时
+     * @return 返回累加天数后的时间
+     */
+    public static Date rollHour(Date date, int hour) {
+        return rollDate(date, 0, 0, 0, hour, 0, 0);
+    }
+
+    /**
+     * 获取指定日期累加指定天数后的时间
+     *
+     * @param date   指定日期
+     * @param minute 指定分钟
+     * @return 返回累加天数后的时间
+     */
+    public static Date rollMinute(Date date, int minute) {
+        return rollDate(date, 0, 0, 0, 0, minute, 0);
     }
 
     /**
@@ -884,9 +909,13 @@ public class Dates {
         Date date = new Date();
         Date date1 = rollDay(date, -2);
         Date date2 = rollMonth(date, -3);
+        Date date3 = rollHour(date, -4);
+        Date date4 = rollMinute(date, -5);
         System.out.println(format(date));
         System.out.println(format(date1));
         System.out.println(format(date2));
+        System.out.println(format(date3));
+        System.out.println(format(date4));
         System.out.println(getTimeOffsetDesc(date1));
         System.out.println(getTimeOffsetDesc(date2));
         System.out.println("获取下个月第一天的起始时间：" + format(getNextMonthStartTime(), PATTERN_CH));
