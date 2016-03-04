@@ -75,9 +75,4 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         return value;
 
     }
-
-    public static void main(String[] args) {
-        String s = "(fdsafasdf)";
-        System.out.println(StringEscapeUtils.escapeHtml4(s));
-    }
 }
