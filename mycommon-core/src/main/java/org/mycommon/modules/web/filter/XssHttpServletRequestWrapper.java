@@ -69,10 +69,15 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     private String cleanXSS(String value) {
 
         if (value != null) {
-            value = StringEscapeUtils.escapeHtml4(value);
+//            value = StringEscapeUtils.escapeHtml4(value);
         }
 
         return value;
 
+    }
+
+    public static void main(String[] args) {
+        String s = "(fdsafasdf)";
+        System.out.println(StringEscapeUtils.escapeHtml4(s));
     }
 }
