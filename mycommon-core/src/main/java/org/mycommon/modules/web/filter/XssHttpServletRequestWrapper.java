@@ -1,5 +1,7 @@
 package org.mycommon.modules.web.filter;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
@@ -67,19 +69,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     private String cleanXSS(String value) {
 
         if (value != null) {
-            //You'll need to remove the spaces from the html entities below
-            value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
-
-            value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");
-
-            value = value.replaceAll("'", "& #39;");
-
-            value = value.replaceAll("eval\\((.*)\\)", "");
-
-            value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
-
-            value = value.replaceAll("script", "");
+            value = StringEscapeUtils.escapeHtml4(value);
         }
+
         return value;
 
     }
