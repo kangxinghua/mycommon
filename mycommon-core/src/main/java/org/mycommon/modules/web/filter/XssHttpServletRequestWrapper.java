@@ -105,6 +105,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             Object keyObject = jsonObject.get(entry.getKey());
             if (keyObject instanceof JSONArray) {
                 escapeHtml((JSONArray) keyObject);
+            } else if (keyObject instanceof JSONObject) {
+                escapeHtml((JSONObject) keyObject);
             } else {
                 if (entry.getValue() != null) {
                     jsonObject.put(entry.getKey(), StringEscapeUtils.escapeHtml4(entry.getValue().toString()));
