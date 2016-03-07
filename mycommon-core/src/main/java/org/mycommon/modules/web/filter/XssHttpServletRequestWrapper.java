@@ -61,7 +61,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             try {//判断是否是JSON字符串
                 if ((Strings.contains(value, "{") && Strings.contains(value, "}")) || (Strings.contains(value, "[") && Strings.contains(value, "]"))) {
                     Object josn = JSONObject.parse(value);
-                    isJson = true;
                     if (josn instanceof JSONArray) {
                         JSONArray jsonArray = (JSONArray) josn;
                         escapeHtml(jsonArray);
@@ -73,6 +72,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
                     } else {
                         logger.error(value);
                     }
+                    isJson = true;
                 }
             } catch (JSONException e) {
                 logger.error(value, e);
