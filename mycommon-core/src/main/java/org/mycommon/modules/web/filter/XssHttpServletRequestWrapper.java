@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.mycommon.modules.utils.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -15,6 +17,8 @@ import java.util.Map;
  * Created by KangXinghua on 2016/3/3.
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+
+    private static Logger logger = LoggerFactory.getLogger(XssHttpServletRequestWrapper.class);
 
     public XssHttpServletRequestWrapper(HttpServletRequest servletRequest) {
         super(servletRequest);
@@ -55,16 +59,24 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         if (value != null) {
             Boolean isJson = false;
             try {//判断是否是JSON字符串
-                if (Strings.contains(value, "{") && Strings.contains(value, "}")) {
-                    JSONObject jsonObject = JSONObject.parseObject(value);
-                    escapeHtml(jsonObject);
-                    value = jsonObject.toJSONString();
+                if ((Strings.contains(value, "{") && Strings.contains(value, "}")) || (Strings.contains(value, "[") && Strings.contains(value, "]"))) {
+                    Object josn = JSONObject.parse(value);
+                    if (josn instanceof JSONArray) {
+                        JSONArray jsonArray = (JSONArray) josn;
+                        escapeHtml(jsonArray);
+                        value = jsonArray.toJSONString();
+                    } else if (josn instanceof JSONObject) {
+                        JSONObject jsonObject = (JSONObject) josn;
+                        escapeHtml(jsonObject);
+                        value = jsonObject.toJSONString();
+                    } else {
+                        logger.error(value);
+                    }
                     isJson = true;
                 }
-            } catch (ClassCastException e) {
 
             } catch (JSONException e) {
-
+                logger.error(value, e);
             }
 
             if (!isJson) {
@@ -95,7 +107,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             if (keyObject instanceof JSONArray) {
                 escapeHtml((JSONArray) keyObject);
             } else {
-                jsonObject.put(entry.getKey(), StringEscapeUtils.escapeHtml4(entry.getValue().toString()));
+                if (entry.getValue() != null) {
+                    jsonObject.put(entry.getKey(), StringEscapeUtils.escapeHtml4(entry.getValue().toString()));
+                }
             }
         }
     }
