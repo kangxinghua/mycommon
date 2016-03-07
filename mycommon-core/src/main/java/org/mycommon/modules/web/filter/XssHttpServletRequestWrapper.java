@@ -61,6 +61,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
                     value = jsonObject.toJSONString();
                     isJson = true;
                 }
+            } catch (ClassCastException e) {
+
             } catch (JSONException e) {
 
             }
