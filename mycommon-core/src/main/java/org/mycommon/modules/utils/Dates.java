@@ -932,7 +932,7 @@ public class Dates {
         System.out.println("获取当周的最后一个工作日：" + format(getLastWorkday(), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("2014年2月8日：" + getWeekdayDesc(new GregorianCalendar(2014, 1, 8).getTime()) + (isWorkday(new GregorianCalendar(2014, 1, 8).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("2015年10月10日：" + getWeekdayDesc(new GregorianCalendar(2015, 9, 10).getTime()) + (isWorkday(new GregorianCalendar(2015, 9, 10).getTime()) ? "是工作日" : "不是工作日"));
-        System.out.println("今年是:" + getYear() + "年" + getMonth() + "月" + getDay() + "日");
+        System.out.println("今天是:" + getYear() + "年" + getMonth() + "月" + getDay() + "日");
         System.out.println("下周一是:" + format(getNextWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("上周一是:" + format(getPrevWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("下个月10是:" + format(rollDay(getNextMonthStartTime(), 9), PATTERN_CLASSICAL_SIMPLE));
