@@ -4,7 +4,7 @@
 
     <groupId>org.mycommon</groupId>
     <artifactId>parent</artifactId>
-    <version>0.0.16</version>
+    <version>0.0.17</version>
     <packaging>pom</packaging>
     <name>mycommon</name>
 
@@ -37,6 +37,7 @@
         <openoffice.version>3.2.1</openoffice.version>
         <sigar.version>1.6.5.132</sigar.version>
         <json.version>20151123</json.version>
+        <javax.mail.version>1.5.5</javax.mail.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -205,7 +206,12 @@
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20151123</version>
+                <version>${json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${javax.mail.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
