@@ -127,11 +127,11 @@ public class Dates {
         LEGALWORKDAY.put(2015, legalWorkday2015);
 
         List<Date> legalWorkday2016 = Lists.newArrayList();
-        legalWorkday2015.add(new GregorianCalendar(2016, 5, 12).getTime());
-        legalWorkday2015.add(new GregorianCalendar(2016, 8, 18).getTime());
-        legalWorkday2015.add(new GregorianCalendar(2016, 8, 6).getTime());
-        legalWorkday2015.add(new GregorianCalendar(2016, 9, 8).getTime());
-        legalWorkday2015.add(new GregorianCalendar(2016, 9, 9).getTime());
+        legalWorkday2016.add(new GregorianCalendar(2016, 5, 12).getTime());
+        legalWorkday2016.add(new GregorianCalendar(2016, 8, 18).getTime());
+        legalWorkday2016.add(new GregorianCalendar(2016, 8, 6).getTime());
+        legalWorkday2016.add(new GregorianCalendar(2016, 9, 8).getTime());
+        legalWorkday2016.add(new GregorianCalendar(2016, 9, 9).getTime());
         LEGALWORKDAY.put(2016, legalWorkday2016);
     }
 
@@ -932,6 +932,7 @@ public class Dates {
         System.out.println("获取当周的最后一个工作日：" + format(getLastWorkday(), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("2014年2月8日：" + getWeekdayDesc(new GregorianCalendar(2014, 1, 8).getTime()) + (isWorkday(new GregorianCalendar(2014, 1, 8).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("2015年10月10日：" + getWeekdayDesc(new GregorianCalendar(2015, 9, 10).getTime()) + (isWorkday(new GregorianCalendar(2015, 9, 10).getTime()) ? "是工作日" : "不是工作日"));
+        System.out.println("2016年6月12日：" + getWeekdayDesc(new GregorianCalendar(2016, 5, 12).getTime()) + (isWorkday(new GregorianCalendar(2016, 5, 12).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("今天是:" + getYear() + "年" + getMonth() + "月" + getDay() + "日");
         System.out.println("下周一是:" + format(getNextWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
         System.out.println("上周一是:" + format(getPrevWeek(Calendar.MONDAY), PATTERN_CLASSICAL_SIMPLE));
