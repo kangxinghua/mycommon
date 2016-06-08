@@ -722,6 +722,7 @@ public class Dates {
      * @return 如果是工作日返回true，否则返回false
      */
     public static boolean isWorkday(Date date) {
+        date = getResetTime(date, 0, 0, 0, 0);
         Calendar cal = Calendar.getInstance();
         if (date != null) {
             cal.setTime(date);

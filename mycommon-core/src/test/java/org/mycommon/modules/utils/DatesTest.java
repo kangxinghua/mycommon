@@ -38,6 +38,7 @@ public class DatesTest {
         System.out.println("2014年2月8日：" + Dates.getWeekdayDesc(new GregorianCalendar(2014, 1, 8).getTime()) + (Dates.isWorkday(new GregorianCalendar(2014, 1, 8).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("2015年10月10日：" + Dates.getWeekdayDesc(new GregorianCalendar(2015, 9, 10).getTime()) + (Dates.isWorkday(new GregorianCalendar(2015, 9, 10).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("2016年6月12日：" + Dates.getWeekdayDesc(new GregorianCalendar(2016, 5, 12).getTime()) + (Dates.isWorkday(new GregorianCalendar(2016, 5, 12).getTime()) ? "是工作日" : "不是工作日"));
+        System.out.println("2016年6月13日：" + Dates.getWeekdayDesc(new GregorianCalendar(2016, 5, 13).getTime()) + (Dates.isWorkday(new GregorianCalendar(2016, 5, 13).getTime()) ? "是工作日" : "不是工作日"));
         System.out.println("今年是:" + Dates.getYear() + "年" + Dates.getMonth() + "月" + Dates.getDay() + "日");
         System.out.println("下周一是:" + Dates.format(Dates.getNextWeek(Calendar.MONDAY), Dates.PATTERN_CLASSICAL_SIMPLE));
         System.out.println("上周一是:" + Dates.format(Dates.getPrevWeek(Calendar.MONDAY), Dates.PATTERN_CLASSICAL_SIMPLE));
@@ -48,6 +49,7 @@ public class DatesTest {
         System.out.println(Dates.getWeekdayDesc(null));
         System.out.println(Dates.parse("2015-01-01"));
         System.out.println(Dates.parse("2015-01-01 12:12:12"));
+        System.out.println(new GregorianCalendar(2016, 5, 8).getTime().getTime());
     }
 
 }
