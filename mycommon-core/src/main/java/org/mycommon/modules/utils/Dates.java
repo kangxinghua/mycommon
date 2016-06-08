@@ -272,14 +272,7 @@ public class Dates {
      * @return 返回重置时分秒后的时间
      */
     public static Date getResetTime(Date date, int hour, int minute, int second) {
-        Calendar cal = Calendar.getInstance();
-        if (date != null) {
-            cal.setTime(date);
-        }
-        cal.set(Calendar.HOUR_OF_DAY, hour);
-        cal.set(Calendar.SECOND, second);
-        cal.set(Calendar.MINUTE, minute);
-        return cal.getTime();
+        return getResetTime(date, hour, minute, second, 0);
     }
 
     /**
