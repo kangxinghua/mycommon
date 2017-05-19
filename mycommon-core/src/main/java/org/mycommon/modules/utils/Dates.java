@@ -111,6 +111,11 @@ public class Dates {
         legalHoliday2016.add(new GregorianCalendar(2016, 9, 7).getTime());
         LEGALHOLIDAY.put(2016, legalHoliday2016);
 
+        List<Date> legalHoliday2017 = Lists.newArrayList();
+
+        LEGALHOLIDAY.put(2017, legalHoliday2017);
+
+
         List<Date> legalWorkday2014 = Lists.newArrayList();
         legalWorkday2014.add(new GregorianCalendar(2014, 0, 26).getTime());
         legalWorkday2014.add(new GregorianCalendar(2014, 1, 8).getTime());
@@ -133,6 +138,10 @@ public class Dates {
         legalWorkday2016.add(new GregorianCalendar(2016, 9, 8).getTime());
         legalWorkday2016.add(new GregorianCalendar(2016, 9, 9).getTime());
         LEGALWORKDAY.put(2016, legalWorkday2016);
+
+        List<Date> legalWorkday2017 = Lists.newArrayList();
+
+        LEGALWORKDAY.put(2017, legalWorkday2017);
     }
 
     /**
