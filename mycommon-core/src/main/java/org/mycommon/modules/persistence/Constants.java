@@ -4,31 +4,12 @@ package org.mycommon.modules.persistence;
  * Created by KangXinghua on 2014/12/5.
  */
 public interface Constants {
+    Integer ERROR = Integer.MAX_VALUE;//未知错误
+    Integer NORMAL = 0;//正常返回
+    Integer NOT_LOGGED_IN = 1;//未登入
+    Integer BAD_REQUEST = 400;//无效请求,一般是必填项目未填写
+    Integer UNAUTHORIZED = 401;//未授权
 
-    /**
-     * emis 系统数据库名
-     */
-    String EMIS_DATABASE_NAME = "emis";
-
-    /**
-     * 删除字段
-     */
-    String FIELD_DELETED = "deleted";
-    /**
-     * 正常
-     */
-    String DEL_FLAG_NORMAL = "0";
-    /**
-     * 删除
-     */
-    String DEL_FLAG_DELETE = "1";
-
-    String SESSION_FORCE_LOGOUT_KEY = "session.force.logout";
-
-    String LOGIN_ERROR_KEY = "login_error_key";
-
-    String SUPER_ADMINISTRATOR_ROLE_ID = "286e0559-1b97-11e4-9933-448a5b8d838e";
-    String BASE_ERROR_MESSAGE = "286e0559-1b97-11e4-9933-448a5b8d838e";
-    Integer ERROR = Integer.MAX_VALUE;
-    Integer NORMAL = 0;
+    String BASE_ERROR_MESSAGE = "系统错误!";
+    String NOT_CHANGE_MESSAGE = "未更新成功数据!";
 }

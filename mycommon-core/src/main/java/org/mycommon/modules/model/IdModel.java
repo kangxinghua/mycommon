@@ -1,5 +1,8 @@
 package org.mycommon.modules.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.ToStringSerializer;
+
 /**
  * Created by KangXinghua on 2016/1/11.
  */
@@ -8,6 +11,7 @@ public class IdModel extends BaseModel {
     protected Boolean deleted; // 删除标记（0：正常；1：删除；）
     protected Integer version; //版本控制
 
+    @JSONField(serializeUsing = ToStringSerializer.class)
     public Long getId() {
         return id;
     }

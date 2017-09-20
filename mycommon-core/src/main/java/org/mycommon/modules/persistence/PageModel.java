@@ -1,12 +1,13 @@
 package org.mycommon.modules.persistence;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by KangXinghua on 2014/12/4.
  * easyui datagrid 返回json对象
  */
-public class PageModel<T> {
+public class PageModel<T> implements Serializable {
     public static final int PAGE_SIZE = Integer.MAX_VALUE;
     private int pageNum = 1;
     private int pageSize = PAGE_SIZE;

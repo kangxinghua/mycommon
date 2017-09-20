@@ -2,8 +2,6 @@ package org.mycommon.modules.security.utils;
 
 import org.junit.Test;
 import org.mycommon.modules.utils.Encodes;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 
