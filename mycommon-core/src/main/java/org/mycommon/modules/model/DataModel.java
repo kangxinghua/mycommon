@@ -10,19 +10,19 @@ import java.util.Date;
  */
 public class DataModel extends IdModel {
 
-    protected Long createBy;    // 创建者
+    protected String createBy;    // 创建者
     protected String createByName;    // 创建者
     protected Date createTime;// 创建日期
-    protected Long updateBy;    // 更新者
+    protected String updateBy;    // 更新者
     protected String updateByName;    // 更新者
     protected Date updateTime;// 更新日期
 
 
-    public Long getCreateBy() {
+    public String getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(Long createBy) {
+    public void setCreateBy(String createBy) {
         this.createBy = createBy;
     }
 
@@ -43,11 +43,11 @@ public class DataModel extends IdModel {
         this.createTime = createTime;
     }
 
-    public Long getUpdateBy() {
+    public String getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(Long updateBy) {
+    public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }
 
