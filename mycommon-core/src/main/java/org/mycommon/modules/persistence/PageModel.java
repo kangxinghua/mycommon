@@ -13,16 +13,16 @@ public class PageModel<T> implements Serializable {
     private int pageSize = PAGE_SIZE;
     private String order;
     private String sortName;
-    private List<T> rows;
-    private Object[] footer;
+    private List<T> data;
+    private Object footer;
     private long total;
 
-    public List<T> getRows() {
-        return rows;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setRows(List<T> rows) {
-        this.rows = rows;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 
     public long getTotal() {
@@ -33,11 +33,11 @@ public class PageModel<T> implements Serializable {
         this.total = total;
     }
 
-    public Object[] getFooter() {
+    public Object getFooter() {
         return footer;
     }
 
-    public void setFooter(Object[] footer) {
+    public void setFooter(Object footer) {
         this.footer = footer;
     }
 
