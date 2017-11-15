@@ -4,7 +4,7 @@
 
     <groupId>org.mycommon</groupId>
     <artifactId>parent</artifactId>
-    <version>0.0.27</version>
+    <version>0.0.28</version>
     <packaging>pom</packaging>
     <name>mycommon</name>
 

@@ -1,30 +1,28 @@
 package org.mycommon.modules.persistence;
 
-import org.mycommon.modules.utils.Strings;
-
 import java.util.Date;
 
 /**
  * Created by KangXinghua on 2014/12/6.
  * 公共返回值,参照openApi
  */
-public class CommonReturn<T> {
+public class CommonReturn {
 
     private Date respTime;
     private int ret;
     private String msg;
 
-    private T data;
+    private Object data;
 
     public CommonReturn() {
         this.respTime = new Date();
     }
 
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
