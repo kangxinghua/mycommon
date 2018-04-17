@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by KangXinghua on 2014/12/6.
  * 公共返回值,参照openApi
  */
-public class CommonReturn {
+public class CommonReturn implements java.io.Serializable {
 
     private Date respTime;
     private int ret;
