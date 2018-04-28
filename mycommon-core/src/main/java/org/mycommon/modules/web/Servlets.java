@@ -151,10 +151,21 @@ public class Servlets {
                 if ((values == null) || (values.length == 0)) {
                     // Do nothing, no values found at all.
                 } else if (values.length > 1) {
-                    params.put(unprefixed.replace("[]", ""), values);
+                    params.put(unprefixed.replace("[]", ""), Arrays.asList(values));
                 } else {
                     if (Strings.isNotBlank(values[0])) {
-                        params.put(unprefixed, values[0]);
+                        String val = values[0];
+                        if (Strings.contains(val, ",")) {
+                            values = val.split(",");
+                            unprefixed = Strings.substringAfter(unprefixed, "_");
+                            params.put("IN_" + unprefixed, Arrays.asList(values));
+                        } else {
+                            if (Strings.contains(unprefixed, "IN_") || Strings.contains(unprefixed, "NIN_")) {
+                                params.put(unprefixed, Arrays.asList(values));
+                            } else {
+                                params.put(unprefixed, values[0]);
+                            }
+                        }
                     }
                 }
             }
