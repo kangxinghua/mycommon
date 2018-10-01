@@ -16,6 +16,18 @@ public class CommonReturn implements java.io.Serializable {
 
     public CommonReturn() {
         this.respTime = new Date();
+        this.msg = "成功!";
+    }
+
+    public CommonReturn(IReturnCodeEnum iReturnCodeEnum) {
+        this.ret = iReturnCodeEnum.getCode();
+        this.msg = iReturnCodeEnum.getDescription();
+    }
+
+    public CommonReturn(IReturnCodeEnum iReturnCodeEnum, Object data) {
+        this.ret = iReturnCodeEnum.getCode();
+        this.msg = iReturnCodeEnum.getDescription();
+        this.data = data;
     }
 
     public Object getData() {
@@ -49,6 +61,11 @@ public class CommonReturn implements java.io.Serializable {
 
     public void setRespTime(Date respTime) {
         this.respTime = respTime;
+    }
+
+    public void setReturnCode(IReturnCodeEnum iReturnCodeEnum) {
+        this.ret = iReturnCodeEnum.getCode();
+        this.msg = iReturnCodeEnum.getDescription();
     }
 
 }
